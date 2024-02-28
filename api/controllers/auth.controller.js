@@ -62,7 +62,7 @@ const authController = {
     }
 
     genTokenAndSetCookie(res, foundUser);
-    res.status(200).json(foundUser);
+    res.status(200).json(foundUser); //.json() sends the response, terminating the middleware chain
   },
   signOut: (req, res) => {
     //set jwt cookie to none

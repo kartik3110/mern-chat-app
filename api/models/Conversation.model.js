@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+// has a particapants array of len 2 and a messages array
 const conversationSchema = new mongoose.Schema(
   {
     participants: [
@@ -11,8 +12,8 @@ const conversationSchema = new mongoose.Schema(
     messages: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
-        default: []
+        ref: "Message",
+        default: [],
       },
     ],
   },

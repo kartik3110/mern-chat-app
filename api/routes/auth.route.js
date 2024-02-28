@@ -10,3 +10,5 @@ router.post("/signin", authController.signIn);
 router.post("/signout", authController.signOut);
 
 export default router;
+
+// A route handler is essentially a middleware function attached to a specific route or HTTP method.
