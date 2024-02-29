@@ -10,4 +10,6 @@ router.post(
   catchAsync(messageController.sendMessage)
 );
 
+router.get("/:id", protectRoute, messageController.getMessages);
+
 export default router;
