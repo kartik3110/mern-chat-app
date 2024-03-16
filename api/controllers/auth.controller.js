@@ -5,6 +5,7 @@ import genTokenAndSetCookie from "../utils/genTokenAndSetCookie.js";
 
 const authController = {
   signUp: async (req, res, next) => {
+    console.log(req.body);
     const { fullName, username, password, confirmPassword, gender } = req.body;
 
     if (!fullName || !username || !password || !confirmPassword) {
