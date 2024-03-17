@@ -1,6 +1,6 @@
 export default function Message() {
   const flag = Math.random() > 0.5;
-  const cssClass = flag ? "chat-start" : "chat-end";
+  const cssClass = flag ? "chat-start" : "chat-end ";
   return (
     <div className={`chat ${cssClass}`}>
       <div className="chat-image avatar">
