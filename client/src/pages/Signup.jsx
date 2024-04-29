@@ -1,23 +1,43 @@
 import { Link } from "react-router-dom";
 import GenderCheckbox from "../components/GenderCheckbox";
+import { useState } from "react";
+import useSignup from "../hooks/useSignup";
 
 const Signup = () => {
+  const [selectedGender, setSelectedGender] = useState("male");
+  const { signup, loading } = useSignup();
+  const updateGender = (gen) => {
+    setSelectedGender(gen);
+  };
+  const handleSignup = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const userDetails = {
+      username: formData.get("username"),
+      fullName: formData.get("fullName"),
+      password: formData.get("password"),
+      confirmPassword: formData.get("confirmPassword"),
+      gender: selectedGender,
+    };
+
+    await signup(userDetails);
+  };
   return (
     <div className="flex w-1/3 min-h-screen flex-col items-center justify-center min-w-96 mx-auto">
       <div className="w-full p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0">
         <h1 className="text-3xl font-semibold text-center text-gray-300">
-          Sign Up <span className="text-blue-500"> ChatApp</span>
+          Sign Up <span className="text-blue-500">Page</span>
         </h1>
-
-        <form>
+        <form onSubmit={handleSignup}>
           <div>
             <label className="label p-2">
               <span className="text-base label-text">Full Name</span>
             </label>
             <input
+              name="fullName"
               type="text"
               placeholder="John Doe"
-              className="w-full input input-bordered  h-10"
+              className="w-full input input-bordered h-10"
             />
           </div>
 
@@ -26,6 +46,7 @@ const Signup = () => {
               <span className="text-base label-text">Username</span>
             </label>
             <input
+              name="username"
               type="text"
               placeholder="johndoe"
               className="w-full input input-bordered h-10"
@@ -38,6 +59,7 @@ const Signup = () => {
             </label>
             <input
               type="password"
+              name="password"
               placeholder="Enter Password"
               className="w-full input input-bordered h-10"
             />
@@ -48,24 +70,28 @@ const Signup = () => {
               <span className="text-base label-text">Confirm Password</span>
             </label>
             <input
+              name="confirmPassword"
               type="password"
               placeholder="Confirm Password"
               className="w-full input input-bordered h-10"
             />
           </div>
 
-          <GenderCheckbox />
+          <GenderCheckbox updateGender={updateGender} />
 
           <Link
-            className="text-sm hover:underline hover:text-blue-600 mt-2 inline-block"
+            className="text-sm underline text-blue-200 hover:text-blue-300 my-2 inline-block"
             to={"/signin"}
           >
             Already have an account?
           </Link>
 
           <div>
-            <button className="btn btn-block btn-sm mt-2 border border-slate-700">
-              Sign Up
+            <button
+              disabled={loading}
+              className="btn btn-block btn-sm mt-2 border border-slate-700"
+            >
+              {loading ? "Loading..." : "Sign Up"}
             </button>
           </div>
         </form>
