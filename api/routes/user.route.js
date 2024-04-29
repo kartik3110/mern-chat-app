@@ -5,5 +5,10 @@ import catchAsync from "../utils/catchAsync.js";
 const router = express.Router();
 
 router.get("/", protectRoute, catchAsync(userController.getAllUsers));
+router.get(
+  "/currentUser",
+  protectRoute,
+  catchAsync(userController.getCurrentUser)
+);
 
 export default router;
