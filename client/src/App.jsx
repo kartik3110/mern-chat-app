@@ -5,7 +5,7 @@ import { Toaster } from "react-hot-toast";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { useAuthContext } from "./context/AuthContext";
 function App() {
-  const { user: currentUser, refetchUser } = useAuthContext();
+  const { user: currentUser } = useAuthContext();
   return (
     <>
       <BrowserRouter>
