@@ -21,8 +21,10 @@ export const AuthProvider = ({ children }) => {
     try {
       const response = await axios.get("api/users/currentUser");
       setUser(response.data);
+      console.log("user data in authctx changed: ", response.data);
     } catch (error) {
       console.log("error fetching user data: ", error);
+      setUser(null);
     }
   };
 

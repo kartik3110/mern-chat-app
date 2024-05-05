@@ -16,7 +16,6 @@ const useSignin = () => {
     try {
       res = await axios.post("/api/auth/signin", userDetails);
       toast.success("welcome Back!");
-      navigate("/");
       await refetchUser();
     } catch (error) {
       toast.error(error.response.data.err);
