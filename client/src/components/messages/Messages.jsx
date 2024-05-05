@@ -1,5 +1,4 @@
 import Message from "./Message";
-import { TiMessages } from "react-icons/ti";
 
 const Messages = () => {
   return (
