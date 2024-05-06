@@ -44,6 +44,7 @@ const messageController = {
 
     if (!convo) {
       res.status(200).json([]); //empty array
+      return; // not returning causes next line to run
     }
 
     await convo.populate("messages");

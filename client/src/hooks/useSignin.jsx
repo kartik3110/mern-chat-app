@@ -1,12 +1,10 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useAuthContext } from "../context/AuthContext";
 
 const useSignin = () => {
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
 
   const { refetchUser } = useAuthContext();
 

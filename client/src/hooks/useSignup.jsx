@@ -7,10 +7,10 @@ import { useAuthContext } from "../context/AuthContext";
 const useSignup = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const { refetchUser } = useAuthContext();
+  const { user, refetchUser } = useAuthContext();
 
   const signup = async (userDetails) => {
-    console.log("user in auth ctx ", authCtx.user);
+    console.log("user in auth ctx ", user);
     setLoading(true);
     let res;
     try {
