@@ -27,8 +27,8 @@ const authController = {
     //add proile pic
     const profilePic =
       gender === "male"
-        ? "https://avatar.iran.liara.run/public/boy"
-        : "https://avatar.iran.liara.run/public/girl";
+        ? `https://avatar.iran.liara.run/public/boy?username=${username}`
+        : `https://avatar.iran.liara.run/public/girl?username=${username}`;
 
     //create new user
     const newUser = new User({
